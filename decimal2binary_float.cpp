@@ -60,6 +60,6 @@ std::string Decimal2Binary (const float& var) {
 
 
 int main()  {
-  std::cout << Decimal2Binary(1.25) <<  std::endl;
+  std::cout << Decimal2Binary(4.0121) <<  std::endl;
   return 0;
 }

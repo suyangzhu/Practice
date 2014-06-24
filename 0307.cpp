@@ -29,7 +29,7 @@ int indexFirstZeroAfterOne(int num) {
   std::cout << result << std::endl;
   return result; 
 }
-
+/* TODO the smallest one
 int indexFirstOneAfterZero(int num) {
   int cur = 1;
   int i;
@@ -49,7 +49,7 @@ int indexFirstOneAfterZero(int num) {
   mask -= ((cur << 1)- 1);
 
 }
-
+*/
 int main() {
   int n = 44;
   std::cout << n <<  "  " << indexFirstZeroAfterOne(n) << std::endl;

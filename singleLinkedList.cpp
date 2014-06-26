@@ -18,7 +18,10 @@ class Node {
     }
     return *this;
   }
-  friend std::ostream& operator<< (std::ostream& os, Node<T>& node);
+//  template<typename T>
+  friend std::ostream& operator<< (std::ostream& os, const Node<T>& node){
+    os << node.val << node.val << std::endl; 
+  }
 
   private:
   T val;
@@ -27,10 +30,6 @@ class Node {
 
 class LinkedList {
 };
-template<typename T>
-std::ostream& operator<< (std::ostream& os, Node<T>& node) {
-  os << node.val << node.val << std::endl; 
-}
 
 int main() {
   return 0;

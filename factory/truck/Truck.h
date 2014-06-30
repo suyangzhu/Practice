@@ -18,8 +18,23 @@ class FordTruck : public Truck {
   void Make () {
     std::cout << "Ford" << std::endl;
   }
-  
+  // This must be static 
   static Truck* Create() {
     return new FordTruck();
   }
 };
+
+class ChevyTruck : public Truck {
+  public:
+  ChevyTruck()  {}
+  ~ChevyTruck () { std::cout << "Delete Chevy Truck " << std::endl; } 
+
+  void Make () {
+    std::cout << "Chevy" << std::endl;
+  }
+
+  static Truck* Create( ) {
+    return new ChevyTruck();
+  }
+};
+

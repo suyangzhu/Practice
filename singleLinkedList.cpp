@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <map>
+#include <stack>
 
 template<typename T>
 class Node {
@@ -49,6 +50,27 @@ class HashTable {
 	}
 	private:
 		std::map<T, T> hashMap;
+};
+
+template <typename T>
+class Stack {
+	public:
+		Stack() {}
+		~Stack() {}
+		void push(const T& val) {
+			myStack.push(val);
+		}
+
+		T pop() {
+			T elem = myStack.top();
+			myStack.pop();
+			return elem;
+		}
+		bool empty() {
+			return myStack.empty();
+		}
+	private:
+		std::stack<T> myStack;
 };
 
 template <typename T>
@@ -163,9 +185,72 @@ class LinkedList {
 			return slowPtr;
 		}
 
+		void deleteNode2(const T& key) {
+			Node<T>* ptr = head;
+			while(ptr) {
+				if (ptr->val == key)
+					break;
+				ptr = ptr->next;
+			}
+			Node<T>* tmp = ptr->next;
+			(*ptr) = (*tmp);
+		}
+
+		void add(const LinkedList& list1, const LinkedList& list2) {
+			Stack<T> stack1;
+			Stack<T> stack2;
+			Stack<T> stack3;
+			Node<T>* ptr1 = list1.head;
+			Node<T>* ptr2 = list2.head;
+			while (ptr1) {
+				std::cout << "....";
+				std::cout << ptr1->val << std::endl;
+				stack1.push(ptr1->val);
+				ptr1 = ptr1->next;
+			}
+
+			while(ptr2) {
+				std::cout << ">>>>> " << ptr2->val << std::endl;
+				stack2.push(ptr2->val);
+				ptr2 = ptr2->next;
+			}
+
+			T carry = 0;
+			while (!stack1.empty() && !stack2.empty()) {
+				T sum = stack1.pop() + stack2.pop() + carry;
+				std::cout << "T = " << sum << std::endl;
+				stack3.push(sum);
+				carry = sum / 10;
+			} 
+
+			while (!stack1.empty()) {
+				T sum = stack1.pop() + carry;
+				stack3.push(sum);
+				carry = sum / 10;
+			}
+			while(!stack2.empty()) {
+				T sum = stack2.pop() + carry;
+				stack3.push(sum);
+				carry = sum / 10;
+			}
+
+			
+			std::cout << "++++" << std::endl;
+			while(!stack3.empty()) {
+				T value(stack3.pop());
+				
+				std::cout << value << std::endl;
+//				Node<T> n(value);
+//				insertNode(n);
+			}
+//			printList();
+			
+		}
 
 
-	private:
+
+
+//	private:
 		Node<T> *head;
 		Node<T> *tail;
 		int length;
@@ -173,11 +258,19 @@ class LinkedList {
 	
 };
 
+//template <typename T> 
+//LinkedList<T>& Add(const LinkedList<T>& list1, const LinkedList<T>& list2){
+//	Stack<T> stack1;
+//	Stack<T> stack2;
+	
+//}
+
 int main() {
 	Node<int> n0(0);
 	Node<int> n1(1);
-	Node<int> n2(1);
+	Node<int> n2(2);
 	Node<int> n3(3);
+	Node<int> n4(4);
 
 	LinkedList<int> list(n0);
 	list.insertNode(n1);
@@ -193,6 +286,27 @@ int main() {
 	std::cout << "Test remove duplicates" << std::endl;
 	list.deleteDuplicates();
 	list.printList();
-	
+
+	std::cout << "---------------" << std::endl;
+	std::cout << "Test deleteNode2" << std::endl;
+	list.deleteNode2(2);
+	list.printList();
+
+	std::cout << "Test stack adder" << std::endl;
+	Node<int> n5(1);
+	Node<int> n6(2);
+	LinkedList<int> list1(n5);
+	list1.insertNode(n6);
+	std::cout << "list1" << std::endl;
+	list1.printList();
+	Node<int> n7(2);
+	Node<int> n8(3);
+	LinkedList<int> list2(n7);
+	list2.insertNode(n8);
+	std::cout << "list2" << std::endl;
+	list2.printList();	
+
+	LinkedList<int> list3;
+	list3.add(list1, list2);
 	return 0;
 }

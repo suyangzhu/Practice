@@ -88,18 +88,19 @@ void post_order(Node_t* root) {
 	post_order(root->right);
 	printf("%d\n", root->val);
 }
-/*
+
 typedef struct LLNode {
-	LLNode(Node_t* t, struct LLNode* n) : next(n), tree(t) {}
+//	LLNode(Node_t* t, struct LLNode* n) : next(n), tree(t) {}
 	struct LLNode* next;
 	Node_t* node;
 } LLNode_t;
+
 typedef struct ListOfLists {
-	ListOfLists() : next(NULL), data(NULL) {}
+//	ListOfLists() : next(NULL), data(NULL) {}
 	struct ListOfLists* next;
 	LLNode_t* data;
 }ListOfLists_t;
-*/
+
 int main() {
 	Node_t* root = NULL;
 	insert(1, &root);

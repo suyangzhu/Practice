@@ -130,10 +130,12 @@ class SuffixTree {
   SuffixTree() { trie = new Trie<T, U>; }
   ~SuffixTree() {}
 
+  /** Create the suffix tree for an input. */
   void createSuffix(T str) {
     int i;
     int len = str.length();
     T sub_str;
+    // Append a "$" to avoid suffix and prefix being the same.
     str += "$";
     
     for (i = 0; i < len; i++) {
@@ -142,12 +144,13 @@ class SuffixTree {
     }
   }
 
+  /** Detect if the word has sub string. */
   bool hasSubString(T str) {
     return trie->hasSubString(str);  
   }
 
   private:
-  Trie<T, U> * trie;
+  Trie<T, U> * trie;  /**< Implicit trie for suffix tree. */
 };
 
 bool  testTrie () {

@@ -29,3 +29,28 @@ TreeNode<T>* BFS(T key, TreeNode<T>* root) {
   return NULL;
 }
 
+template<typename T> 
+void BFS_path(TreeNode<T>* root) {
+  Queue<TreeNode<T>* > queue;
+  if (root) {
+    queue.enqueue(root);
+  }
+  while(!queue.isEmpty()) {
+    TreeNode<T>* node = queue.dequeue();
+    std::cout << node->getVal() << " ";
+    if (node->left)
+      queue.enqueue(node->left);
+    if (node->right)
+      queue.enqueue(node->right);
+  }
+}
+
+
+
+
+
+
+
+
+
+

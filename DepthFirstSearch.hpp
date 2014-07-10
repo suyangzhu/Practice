@@ -26,6 +26,16 @@ TreeNode<T>* DFS(T key, TreeNode<T>* root) {
   return NULL;
 }
 
+template<typename T> 
+TreeNode<T>* DFS_Recursion(T key, TreeNode<T>* root) {
+  if (root == NULL || root->getVal() == key) 
+    return root;
+  else if (key < root->getVal())
+    return DFS(key, root->left);
+  else 
+    return DFS(key, root->right);
+}
+
 template<typename T>
 TreeNode<T>* DFS_path(TreeNode<T>* root) {
   Stack<TreeNode<T>* > stack;

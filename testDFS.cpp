@@ -26,6 +26,15 @@ int main() {
   } else {
     std::cout << "Not found " << std::endl;
   }
+  std::cout << "input value you would like to find" << std::endl;
+  std::cin >> num;
+  node = DFS_Recursion(num,root);
+  if (node) {
+    std::cout << "The node you are looking for has value " 
+    << node->getVal() << std::endl;
+  } else {
+    std::cout << "Not found " << std::endl;
+  }
   return 0;
 }
 

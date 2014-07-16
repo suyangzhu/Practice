@@ -16,10 +16,11 @@ TreeNode<T>* BFS(T key, TreeNode<T>* root) {
     queue.enqueue(root);
   }
   while (!queue.isEmpty()) {
+    // If this node has been visited. return.
     TreeNode<T>* node = queue.dequeue();
     if (node->getVal() == key) {
       return node;
-    } else {
+    } else {    /**< Insert all its children into the queue. */
       if (node->left)
         queue.enqueue(node->left);
       if (node->right)

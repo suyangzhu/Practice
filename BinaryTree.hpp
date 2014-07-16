@@ -55,6 +55,24 @@ class TreeNode {
       return right->search(key);
     }
   }
+  bool isChild(TreeNode& node) {
+    if (this == NULL)
+      return false;
+    if (&node == this)
+      return true;
+    return left->isChild(node) ||
+           right->isChild(node);
+  }
+
+  TreeNode& leastCommonAncestor(TreeNode& node1, TreeNode& node2) {
+    if (left->isChild(node1) && 
+        left->isChild(node2))
+      return left->leastCommonAncestor(node1, node2);
+    else if (right->isChild(node1) &&
+             right->isChild(node2))
+      return right->leastCommonAncestor(node1, node2);
+    return *this;
+  }
 
   TreeNode* left;
   TreeNode* right;
@@ -77,6 +95,10 @@ class BinaryTree {
 
   TreeNode<T>& searchKey(T key) {
     return root->search(key);
+  }
+
+  TreeNode<T>& CommonAncestor(TreeNode<T> node1, TreeNode<T> node2) {
+   return root->leastCommonAncestor(node1, node2);
   }
 
 

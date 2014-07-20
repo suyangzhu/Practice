@@ -6,11 +6,14 @@ int main() {
 	int i;
 	int sum = a[0];
 	int maxsum = a[0];
-	for (i = 0; i < 5; i++) {
+  if (sum < 0)
+    sum = 0;
+	for (i = 1; i < 5; i++) {
 		sum += a[i];
 		if (maxsum < sum) {
 			maxsum = sum;
-		} else if (sum < 0) {
+		} 
+    if (sum < 0) {
 			sum = 0;
 		}
 	}

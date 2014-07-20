@@ -104,8 +104,10 @@ typedef struct ListOfLists {
 int maxdepth(Node_t* root) {
   if (root == NULL)
     return 0;
-  return maxdepth(root->left) > maxdepth(root->right) ? \
-  1+maxdepth(root->left) : 1+maxdepth(root->right);
+  int leftMax = maxdepth(root->left);
+  int rightMax = maxdepth(root->right);
+  return leftMax(root->left) > rightMax ? \
+  1+leftMax : 1+rightMax;
 }
 
 int mindepth(Node_t* root) {

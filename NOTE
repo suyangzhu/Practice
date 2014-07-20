@@ -1,1 +1,5 @@
 - linked list has cycles: consider beginning, null, one element. etc.
+- populating next right to next node: 
+  if using recursion it will consume too much space. Consider do it iteraly using
+  3 pointers. Current, prev and head. head is the head for the Children leve.
+

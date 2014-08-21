@@ -49,11 +49,11 @@ void print(int* list, int begin, int end) {
   printf("\n");
 }
 int main() {
-  int A[10] = {9, 1, 2, 3, 5, 6, 4, 7,8, 0};
-  int B[10];
-  print(A, 0, 10);
-  TopDownMergeSort(A, B, 10);
-  print(A, 0, 10);  
+  int A[2] = {2,1};
+  int B[2];
+  print(A, 0, 2);
+  TopDownMergeSort(A, B, 2);
+  print(A, 0, 2);  
 
   return 0;
 }

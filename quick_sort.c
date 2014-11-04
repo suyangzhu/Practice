@@ -6,33 +6,37 @@ int partition(int*, int, int);
 
 void quick_sort(int* A, int lo, int hi) {
   int pivot;
-  if (hi > lo) {
+  if (lo < hi) {
     pivot = partition(A, lo, hi);
     quick_sort(A, lo, pivot - 1);
     quick_sort(A, pivot + 1, hi);
   }
 }
 
+void swap(int* A, int first, int second) {
+	int tmp = A[first];
+	A[first] = A[second];
+	A[second] = tmp;
+}
+/** Random choose. */
+int ChoosePivot(int lo, int hi) {
+	return lo + rand() % (hi-lo+1);
+}
+
 int partition(int* A, int lo, int hi) {
-  int i;
-  int left = lo;
-  int right = hi;
-  int pivotIndex = lo;
-  int pivotVal = A[pivotIndex];
-  while (left < right) {
-    while (A[left] <= pivotVal) 
-      left++;
-    while (A[right] > pivotVal)
-      right--;
-    if (left < right) {
-      int tmp = A[left];
-      A[left] = A[right];
-      A[right] = tmp;
-    }
-  }
-  A[lo] = A[right];
-  A[right] = pivotVal;
-  return right;
+	int pivotIdx = ChoosePivot(lo, hi);
+	int pivotVal = A[pivotIdx];
+	swap(A, pivotIdx, hi);
+	int storeIdx = lo;
+	int i;
+	for (i = lo; i < hi; i++) {
+		if (A[i] < pivotVal) {
+			swap(A, i, storeIdx);
+			storeIdx++;
+		}
+	}
+	swap(A, storeIdx, hi);
+	return storeIdx;
 }
 
 void print(int* A, int begin, int end) {
@@ -47,5 +51,21 @@ int main() {
   int size = sizeof(A) / sizeof(int);
   quick_sort(A, 0, size-1);
   print(A, 0, 10);
+
+  int B[0] = {};
+  size = sizeof(B)/sizeof(int);
+  quick_sort(B, 0, size-1);
+  print(B, 0, size);
+
+  int C[1] = {1};
+  size = sizeof(C)/sizeof(int);
+  quick_sort(C, 0, size-1);
+  print(C, 0, size);
+
+
+  int D[10] = {12, 32, 22, 22, 22, 12, -1, 12, 0, -100};
+  size = sizeof(D)/sizeof(int);
+  quick_sort(D, 0, size-1);
+  print(D, 0, size);
   return 0;
 }

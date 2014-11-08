@@ -23,6 +23,6 @@ void move(int num, int src, int dest, int mid) {
 }
 
 int main() {
-  move(8, 1, 3, 2);
+  move(18, 1, 3, 2);
   return 0;
 }

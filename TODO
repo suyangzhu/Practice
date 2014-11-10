@@ -1,0 +1,13 @@
+- validate UTF-8
+- ATOI, ATOF
+- a/b   NEED to do it.
+- In-place bst to double linked list. CTCI.
+- Elevator problem.
+- Google File System.
+
+- Elevator design problem.
+- Fix the bug in UTF-8.
+- Print the programs.
+
+- Write Singleton
+given a server that has requests coming in. Design a data structure such that you can fetch the count of the number requests in the last second, minute and hour.- Read Sudoku, N queens

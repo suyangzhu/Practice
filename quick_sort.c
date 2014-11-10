@@ -38,7 +38,22 @@ int partition(int* A, int lo, int hi) {
 	swap(A, storeIdx, hi);
 	return storeIdx;
 }
-
+/*
+int partition(int* A, int lo, int hi) {
+	int pivotIdx = RandomSelect(lo, hi);
+	int pivotValue = A[pivotIdx];
+	swap(A, pivotIdx, hi);
+	int storeIdx = lo;
+	for (int i = 0; i < hi; i++) {
+		if (A[i]  < pivotValue) {
+			swap(A, i, storeIdx);
+			storeIdx++;
+		}
+	}
+	swap(A, storeIdx, hi);
+	return storeIdx;
+}
+*/
 void print(int* A, int begin, int end) {
   int i;
   for (i = begin; i < end; i++) 

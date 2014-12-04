@@ -9,10 +9,12 @@ struct Node {
 };
 
 struct Comparator {
-	bool operator() (Node a, Node b) {
-		return a.val < b.val;
+	bool operator() (Node &a, Node &b) {
+		return a.val > b.val;
 	}
 };
+
+
 void TestPriorityQueue() {
 	priority_queue<Node, vector<Node>, Comparator> pq;
 	for (int i = 0; i < 10; i++) {

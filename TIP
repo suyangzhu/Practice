@@ -1,0 +1,2 @@
+- How to remove svn repo from directory
+      find . -iname ".svn" -print0 | xargs -0 rm -r

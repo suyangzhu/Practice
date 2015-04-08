@@ -11,5 +11,4 @@ int main() {
   std::cout << str.size() << std::endl;
   std::cout << vec[0][0] << std::endl;
   return 0;
-
 }
